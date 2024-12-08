@@ -3,8 +3,12 @@
     src: url(../font/Minecraft.ttf);
 }
 
+@font-face {
+    font-family: 'Bit' ;
+    src: url(../font/PressStart2P-vaV7.ttf);
+}
+
 html{
-    font-family: 'Minecraft', sans-serif;
     font-size: 20px;
     letter-spacing: 0.8px;
     min-height: 100vh;
@@ -13,4 +17,29 @@ html{
     background-size: cover;
 }
 
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Bit';
+}
+
+h1{
+    font-family: 'Minecraft';
+    margin: 0 auto 10px auto;
+    color: #d8e9ef;
+}
+
+p{
+    font-family: 'Bit';
+    margin: 0;
+}
+
+.app-message{
+    height: 20px;
+    margin-bottom: 10px;
+}
 
