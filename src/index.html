@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a href ="styles.css" rel="stylesheet"></a>
+    <link href ="styles.css" rel="stylesheet"></link>
 
-    <title>Document</title>
+    <title>Pomodoro App</title>
 </head>
 <body>
-    <script src="script.js"></script>
+    <div class="app-container">
+        <h1>Pomodoro</h1>
+        <div class="app-message"> press start to begin</div>
+        <div class ="app-circle">
+            <div class="circle-shape">
+                <div class="semi-circle right-side circle-mask"></div>
+                <div class="semi-circle right-side circle"></div>
+                <div class="semi-circle left-side circle-mask"></div>
+                <div class="semi-circle left-side circle"></div>
+            </div>
+            <div class="app-counter-box">
+                <p><span class="minutes">25</span>:<span class="seconds">00</span></p>
+            </div>
+            <button class="btn-start">start</button>
+        </div>
+    </div>
+
 </body>
+<script src="script.js"></script>
 </html>

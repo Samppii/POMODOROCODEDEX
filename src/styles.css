@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url(../font/Minecraft.ttf);
+}
+
+html{
+    font-family: 'Minecraft', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    min-height: 100vh;
+    color: #d8e9ef;
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    background-size: cover;
+}
+
+
