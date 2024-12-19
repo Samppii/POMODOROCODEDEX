@@ -205,3 +205,133 @@ button:hover {
     background-color: #333333;
     color: #ffffff;
 }
+
+/* Status Pop-Up Message */
+.status-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 0.9em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fade-in-out 3s ease-in-out;
+}
+
+/* Pause/Resume Sound Button */
+.btn-toggle-sound {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    z-index: 1000;
+}
+
+.btn-toggle-sound:hover {
+    background-color: #444;
+}
+
+/* Pop-Up Animation */
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Time Settings Container */
+.time-settings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Label Styling */
+.time-settings label {
+    font-size: 1em;
+    font-family: 'Bit', sans-serif;
+    color: #333333;
+    text-align: center;
+}
+
+/* Input Styling */
+.time-settings input {
+    width: 70px;
+    padding: 5px;
+    font-size: 1em;
+    font-family: 'Bit', sans-serif;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Input Focus State */
+.time-settings input:focus {
+    outline: none;
+    border-color: #333333;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Hover State */
+.time-settings input:hover {
+    background-color: #f0f0f0;
+    border-color: #666666;
+}
+
+/* Control Buttons Container */
+.control-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Session/Break Start Buttons */
+.btn-start-session,
+.btn-start-break {
+    padding: 10px 20px;
+    border: 2px solid #e0e0e0;
+    background-color: #f0f0f0;
+    font-size: 1em;
+    font-family: 'Bit', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.btn-start-session:hover,
+.btn-start-break:hover {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
