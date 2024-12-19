@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./src/styles.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <title>Pomodoro App</title>
 </head>
 <body>
-   <div class="app-container">
+   <div id="app-container" class="app-container">
     <h1>Pomodoro</h1>
     <div class="app-message">Set your session and break times</div>
     
     <div class="time-settings">
         <label for="session-time">Session (minutes):</label>
-        <input type="number" id="session-time" value="0" min="1" />
+        <input type="number" id="session-time" value="60" min="1" />
 
         <label for="break-time">Break (minutes):</label>
-        <input type="number" id="break-time" value="0" min="0" />
+        <input type="number" id="break-time" value="5" min="1" />
     </div>
 
     <div class="app-counter-box">
@@ -31,7 +31,7 @@
     <button class="btn-reset">Reset</button>
 </div>
 
-    <div class="task-container">
+    <div id = "task-container" class="task-container">
         <h2>Tasks</h2>
         <form id="task-form">
             <input type="text" id="task-input" placeholder="Enter a task" required />
@@ -42,6 +42,6 @@
     </div>
     <div class="status-popup" id="status-popup" style="display: none;"></div>
     <button id="toggle-sound" class="btn-toggle-sound" style="display: none;">Pause Sound</button>
-    <script src="./src/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
