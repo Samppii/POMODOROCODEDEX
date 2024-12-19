@@ -92,7 +92,7 @@ button:hover {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: auto;
 }
 
 .task-container h2 {
@@ -334,4 +334,15 @@ button:hover {
     background-color: #333333;
     color: #ffffff;
     border-color: #333333;
+}
+
+/* Draggable Containers */
+.app-container, .task-container {
+    position: absolute; /* Allows the containers to move */
+    cursor: grab; /* Changes cursor to indicate draggability */
+    user-select: none; /* Prevents text selection while dragging */
+}
+
+.app-container:active, .task-container:active {
+    cursor: grabbing; /* Changes cursor to grabbing state while dragging */
 }

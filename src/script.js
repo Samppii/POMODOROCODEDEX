@@ -183,3 +183,39 @@ clearTasksButton.addEventListener('click', () => {
     taskList.innerHTML = '';
     showPopupMessage('Task list cleared!');
 });
+
+
+// Function to make an element draggable
+const makeDraggable = (elementId) => {
+    const element = document.getElementById(elementId);
+
+    let offsetX = 0; 
+    let offsetY = 0;
+    let isDragging = false;
+
+    // Mouse down event: Start dragging
+    element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - element.getBoundingClientRect().left;
+        offsetY = e.clientY - element.getBoundingClientRect().top;
+        element.style.cursor = 'grabbing'; // Change cursor
+    });
+
+    // Mouse move event: Update position
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        }
+    });
+
+    // Mouse up event: Stop dragging
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        element.style.cursor = 'grab'; // Reset cursor
+    });
+};
+
+// Make app container and task container draggable
+makeDraggable('app-container');
+makeDraggable('task-container');
