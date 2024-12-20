@@ -257,7 +257,7 @@ button:hover {
     }
 }
 
-/* Time Settings Container */
+/* Time Settings  Container */
 .time-settings {
     display: flex;
     flex-wrap: wrap;
@@ -320,7 +320,7 @@ button:hover {
     border: 2px solid #e0e0e0;
     background-color: #f0f0f0;
     font-size: 1em;
-    font-family: 'Bit', sans-serif;
+    font-family: 'Bit';
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 5px;
@@ -338,11 +338,11 @@ button:hover {
 
 /* Draggable Containers */
 .app-container, .task-container {
-    position: absolute; /* Allows the containers to move */
-    cursor: grab; /* Changes cursor to indicate draggability */
-    user-select: none; /* Prevents text selection while dragging */
+    position: absolute; 
+    cursor: grab; 
+    user-select: none; 
 }
 
 .app-container:active, .task-container:active {
-    cursor: grabbing; /* Changes cursor to grabbing state while dragging */
+    cursor: grabbing; 
 }
