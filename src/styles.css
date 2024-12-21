@@ -346,3 +346,80 @@ button:hover {
 .app-container:active, .task-container:active {
     cursor: grabbing; 
 }
+
+
+.spotify-container {
+    position: absolute; 
+    max-width: 400px;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: grab;
+    user-select: none;
+}
+
+.spotify-container:active {
+    cursor: grabbing; 
+}
+
+
+.player-controls button {
+    font-size: 1.5rem;
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.player-controls button:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+
+.volume-control {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.volume-control input[type="range"] {
+    width: 80%;
+}
+
+
+#results-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+#results-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#results-list li:hover {
+    background-color: #f9f9f9;
+}
+
+/* Add Responsive Styling */
+@media (max-width: 768px) {
+    .app-container, .task-container, .spotify-container {
+        width: 90%;
+        position: relative; 
+    }
+}
