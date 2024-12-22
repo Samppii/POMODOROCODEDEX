@@ -195,6 +195,9 @@ const makeDraggable = (elementId) => {
 
     // Mouse down event: Start dragging
     element.addEventListener('mousedown', (e) => {
+        // Ignore dragging when interacting with input elements
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+
         isDragging = true;
         offsetX = e.clientX - element.getBoundingClientRect().left;
         offsetY = e.clientY - element.getBoundingClientRect().top;
@@ -219,15 +222,17 @@ const makeDraggable = (elementId) => {
 // Makes containers draggable
 makeDraggable('app-container');
 makeDraggable('task-container');
-makeDraggable('spotify-container')
+makeDraggable('spotify-container');
+makeDraggable('weather-container');
 
 
+// Spotify Player Functionality
 //spotify api
 const clientId = '5b1cc677bbe24fd9b0135d64ca4048c8';
 const redirectUri = 'http://127.0.0.1:5500/src/index.html';
 const scopes = 'user-read-playback-state user-modify-playback-state';
 
-let accessToken = 'BQD5b8R2DZRPq1ft09IssfldSpE3JlDN1YL8JJ1lxOU0EZ1VS3owIHX8AbDM-U86koDz-9CDEdXjkdQ1TTDIxAf4RF8AGwCBoJMASQArEgwu4nqNWquqyRSYqgdbZ7m0w4h6K8q7GYp5vA0So_6M2lHepTzoqLdkGIUjrY5eLu3SjBqabe7e882DTBdj0Vkm1Hn3NUbSo9zlkYPuwvIX_LQSfqYsG9sEK9mZQxov';
+let accessToken = 'BQB9GE1W3qfUsm3RXHsFI_jBMosodmBBapD6Zu0br-v-D-5zKSMJeqhf0y5c6FN9wNOpl1XWUvFLIAnFTcJF7vzGtqQq-aRWJkcHWw6I7-7-q_EpKrOvIuxYQzvZKO09INkfeXLAjyQSHXZ4y-u2-acyhOki6w3kRpLAw4I5jSWE4tsE2w6tnXurQpg4I9rmLzsEdloYQgsXcxl63kAVp6MahfuTLl1lQUIcm6fQ';
 let deviceId = '';
 let currentTrackUri = '';
 
@@ -237,7 +242,7 @@ document.getElementById('login-button').addEventListener('click', () => {
     window.location.href = authUrl;
 });
 
-// Extract Token
+// Extracting Token
 window.onload = async () => {
     const hash = window.location.hash;
     if (hash) {
@@ -299,25 +304,58 @@ document.getElementById('pause-button').addEventListener('click', async () => {
     });
 });
 
-document.getElementById('next-button').addEventListener('click', async () => {
-    await fetch('https://api.spotify.com/v1/me/player/next', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${accessToken}` }
-    });
-});
-
-document.getElementById('previous-button').addEventListener('click', async () => {
-    await fetch('https://api.spotify.com/v1/me/player/previous', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${accessToken}` }
-    });
-});
-
 // Volume Control
-document.getElementById('volume-slider').addEventListener('input', async (event) => {
+const volumeSlider = document.getElementById('volume-slider');
+const volumeFill = document.getElementById('volume-fill');
+
+// Update volume fill and send the volume to Spotify API
+volumeSlider.addEventListener('input', async (event) => {
     const volumePercent = event.target.value;
-    await fetch(`https://api.spotify.com/v1/me/player/volume?volume_percent=${volumePercent}`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${accessToken}` }
-    });
+    
+    // Update the visual representation
+    volumeFill.style.width = `${volumePercent}%`;
+
+    // Make the API call to update the Spotify player volume
+    try {
+        await fetch(`https://api.spotify.com/v1/me/player/volume?volume_percent=${volumePercent}`, {
+            method: 'PUT',
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        console.log(`Volume set to ${volumePercent}%`);
+    } catch (error) {
+        console.error('Error setting volume:', error);
+    }
 });
+
+
+//Weather widget
+const apiKey = '0dc33ec3cb200923626813c4b0a7814c';
+
+document.getElementById('get-weather-btn').addEventListener('click', async () => {
+    const cityName = document.getElementById('city-input').value;
+    if (!cityName) {
+        alert('Please enter a city name.');
+        return;
+    }
+
+    const weatherResult = document.getElementById('weather-result');
+    weatherResult.style.display = 'none';
+
+    try {
+        // Fetch weather data
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`);
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        const data = await response.json();
+
+        // Display weather data
+        document.getElementById('weather-city').textContent = `Weather in ${data.name}`;
+        document.getElementById('weather-temp').textContent = `Temperature: ${data.main.temp}°C`;
+        document.getElementById('weather-desc').textContent = `Condition: ${data.weather[0].description}`;
+        weatherResult.style.display = 'block';
+    } catch (error) {
+        alert('Error fetching weather data: ' + error.message);
+    }
+});
+
