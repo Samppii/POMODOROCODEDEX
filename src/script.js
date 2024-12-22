@@ -192,37 +192,50 @@ const makeDraggable = (elementId) => {
     let offsetY = 0;
     let isDragging = false;
 
+    // Loads saved position
+    const savedPosition = JSON.parse(localStorage.getItem(elementId));
+    if (savedPosition) {
+        element.style.left = `${savedPosition.left}px`;
+        element.style.top = `${savedPosition.top}px`;
+    }
+
     // Mouse down event: Start dragging
     element.addEventListener('mousedown', (e) => {
-
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return; // Ignores input/button elements
         isDragging = true;
         offsetX = e.clientX - element.getBoundingClientRect().left;
         offsetY = e.clientY - element.getBoundingClientRect().top;
-        element.style.cursor = 'grabbing';
+        element.style.cursor = 'grabbing'; // Changes cursor
     });
 
     // Mouse move event: Update position
     document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
+            const left = e.clientX - offsetX;
+            const top = e.clientY - offsetY;
+
+            element.style.left = `${left}px`;
+            element.style.top = `${top}px`;
         }
     });
 
-    // Mouse up event: Stop dragging
+    // Mouse up event: Stop dragging and save position
     document.addEventListener('mouseup', () => {
-        isDragging = false;
-        element.style.cursor = 'grab'; // Reset cursor
+        if (isDragging) {
+            isDragging = false;
+            element.style.cursor = 'grab';
+
+            // Save position in localStorage
+            const rect = element.getBoundingClientRect();
+            const position = { left: rect.left, top: rect.top };
+            localStorage.setItem(elementId, JSON.stringify(position));
+        }
     });
 };
 
-// Makes containers draggable
-makeDraggable('app-container');
-makeDraggable('task-container');
-makeDraggable('spotify-container');
-makeDraggable('weather-container');
+// Applying draggable functionality to containers
+['app-container', 'task-container', 'spotify-container', 'weather-container'].forEach(makeDraggable);
+
 
 
 // Spotify Player Functionality
