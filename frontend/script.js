@@ -245,7 +245,7 @@ let clientId = '';
 let accessToken = '';
 
 // Fetch Spotify credentials from the backend
-fetch('http://localhost:5001/spotify-token')
+fetch('/api/spotify-token')
     .then((response) => response.json())
     .then((data) => {
         clientId = data.clientId; 
@@ -254,8 +254,8 @@ fetch('http://localhost:5001/spotify-token')
     })
     .catch((error) => console.error('Error fetching Spotify credentials:', error));
 
-const redirectUri = 'http://127.0.0.1:5500/index.html';
-const scopes = 'user-read-playback-state user-modify-playback-state';
+    const redirectUri = window.location.origin + '/index.html'; // Automatically detects the environment
+    const scopes = 'user-read-playback-state user-modify-playback-state';
 
 // Example usage
 document.getElementById('login-button').addEventListener('click', () => {
@@ -352,7 +352,7 @@ volumeSlider.addEventListener('input', async (event) => {
 
 //Weather widget
 let apiKey = '';
-fetch('http://localhost:5001/weather-key')
+fetch('/api/weather-key')
     .then((response) => response.json())
     .then((data) => {
         apiKey = data.apiKey; // Use the API key
