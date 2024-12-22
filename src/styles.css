@@ -40,12 +40,16 @@ p {
     font-size: 1.2em;
     color: #555555;
 }
-
+/*Pomodoro section styles*/
 .app-message {
     margin-bottom: 20px;
     color: #666666;
     font-size: 0.9em;
     text-align: center;
+}
+
+.app-message p{
+    font-size: 0.9em;
 }
 
 .app-container {
@@ -94,7 +98,86 @@ button:hover {
     width: auto;
     justify-content: center;
 }
+/* Time Settings  Container */
+.time-settings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+/* Label Styling */
+.time-settings label {
+    font-size: 1em;
+    font-family: 'Bit', sans-serif;
+    color: #333333;
+    text-align: center;
+}
+
+/* Input Styling */
+.time-settings input {
+    width: 70px;
+    padding: 5px;
+    font-size: 1em;
+    font-family: 'Bit', sans-serif;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Input Focus State */
+.time-settings input:focus {
+    outline: none;
+    border-color: #333333;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Hover State */
+.time-settings input:hover {
+    background-color: #f0f0f0;
+    border-color: #666666;
+}
+
+/* Control Buttons Container */
+.control-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+/* Session/Break Start Buttons */
+.btn-start-session,
+.btn-start-break {
+    padding: 10px 20px;
+    border: 2px solid #e0e0e0;
+    background-color: #f0f0f0;
+    font-size: 1em;
+    font-family: 'Bit';
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.btn-start-session:hover,
+.btn-start-break:hover {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+
+/* Task List Section */
 .task-container {
     margin-top: 20px;
     padding: 20px;
@@ -173,7 +256,7 @@ button:hover {
 
 /* Checked state for the custom checkbox */
 #task-list li input[type="checkbox"]:checked + label {
-    background-color: #68911c;
+    background-color: #b80000;
     border-color: #000000;
 }
 
@@ -189,7 +272,6 @@ button:hover {
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
 }
-
 
 #task-list li.completed {
     text-decoration: line-through;
@@ -219,6 +301,7 @@ button:hover {
     background-color: #333333;
     color: #ffffff;
 }
+
 
 /* Status Pop-Up Message */
 .status-popup {
@@ -269,85 +352,6 @@ button:hover {
         opacity: 0;
         transform: translateX(-50%) translateY(-10px);
     }
-}
-
-/* Time Settings  Container */
-.time-settings {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Label Styling */
-.time-settings label {
-    font-size: 1em;
-    font-family: 'Bit', sans-serif;
-    color: #333333;
-    text-align: center;
-}
-
-/* Input Styling */
-.time-settings input {
-    width: 70px;
-    padding: 5px;
-    font-size: 1em;
-    font-family: 'Bit', sans-serif;
-    text-align: center;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-}
-
-/* Input Focus State */
-.time-settings input:focus {
-    outline: none;
-    border-color: #333333;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Input Hover State */
-.time-settings input:hover {
-    background-color: #f0f0f0;
-    border-color: #666666;
-}
-
-/* Control Buttons Container */
-.control-buttons {
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Session/Break Start Buttons */
-.btn-start-session,
-.btn-start-break {
-    padding: 10px 20px;
-    border: 2px solid #e0e0e0;
-    background-color: #f0f0f0;
-    font-size: 1em;
-    font-family: 'Bit';
-    cursor: pointer;
-    text-transform: uppercase;
-    border-radius: 5px;
-    margin: 5px;
-    transition: all 0.3s ease-in-out;
-    display: inline-block;
-}
-
-.btn-start-session:hover,
-.btn-start-break:hover {
-    background-color: #333333;
-    color: #ffffff;
-    border-color: #333333;
 }
 
 /* Draggable Containers */
@@ -407,7 +411,6 @@ button:hover {
 .player-controls button:hover {
     background-color: #333333;
     color: #ffffff;
-    border: 2px solid #333333;
 }
 
 .player-controls {
@@ -512,6 +515,8 @@ button:hover {
     }
 }
 
+
+/*WEATHER WIDGET*/
 .weather-container {
     position: absolute;
     max-width: 400px;
@@ -569,5 +574,347 @@ button:hover {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+.drag-header {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 20px;
+    cursor: grab;
+    user-select: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.drag-header:active {
+    cursor: grabbing;
+}
+
+/* THEME SWITCHER */
+/* Theme Switcher Styling */
+.theme-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Bit', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Label Styling */
+.theme-switcher label {
+    font-size: 0.9em;
+    color: inherit;
+}
+
+/* Dropdown Styling */
+.theme-switcher select {
+    padding: 5px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: 'Bit', sans-serif;
+    font-size: 0.9em;
+    background-color: inherit; 
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.theme-switcher select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Default Mode */
+body.default {
+    background-color: #f9f9f9;
+    color: #2b2b2b;
+}
+
+body.default .app-container,
+body.default .task-container,
+body.default .spotify-container,
+body.default .weather-container {
+    background-color: #ffffff;
+    border-color: #e0e0e0;
+}
+
+body.default button {
+    background-color: #f0f0f0;
+    color: #333333;
+    border-color: #e0e0e0;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.default button:hover {
+    background-color: #333333;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Cozy Theme */
+body.cozy {
+    background-color: #e3f2fd;
+    color: #1a237e;
+}
+
+body.cozy .app-container,
+body.cozy .task-container,
+body.cozy .spotify-container,
+body.cozy .weather-container {
+    background-color: #bbdefb; 
+    border-color: #64b5f6;
+    box-shadow: 0 4px 8px rgba(100, 181, 246, 0.5);
+}
+
+body.cozy button {
+    background-color: #64b5f6; 
+    color: #ffffff;
+    border-color: #1e88e5;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.cozy button:hover {
+    background-color: #1e88e5;
+    color: #bbdefb; 
+    transform: translateY(-3px);
+}
+
+body.cozy .drag-header {
+    background-color: #1a237e; 
+    color: #ffffff;
+}
+
+body.cozy #get-weather-btn {
+    background-color: #64b5f6; 
+    color: #ffffff; 
+    border-color: #1e88e5; 
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.cozy #get-weather-btn:hover {
+    background-color: #1e88e5; 
+    color: #bbdefb; 
+    transform: translateY(-3px); 
+}
+
+/* Sakura Theme */
+body.sakura {
+    background-color: #ffe4e1;
+    color: #ff69b4;
+}
+
+body.sakura .app-container,
+body.sakura .task-container,
+body.sakura .spotify-container,
+body.sakura .weather-container {
+    background-color: #fff0f5;
+    border-color: #ff69b4;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.5);
+}
+
+body.sakura button {
+    background-color: #ffb6c1;
+    color: #ffffff;
+    border-color: #ff69b4;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.sakura button:hover {
+    background-color: #ff69b4;
+    color: #fff0f5;
+    transform: translateY(-3px);
+}
+body.sakura .drag-header {
+    background-color: #ff69b4;
+    color: #ffffff;
+}
+body.sakura #get-weather-btn {
+    background-color: #ffb6c1;
+    color: #ffffff;
+    border-color: #ff69b4;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.sakura #get-weather-btn:hover {
+    background-color: #ff69b4;
+    color: #fff0f5;
+    transform: translateY(-3px); 
+}
+
+/* Autumn Theme */
+body.autumn {
+    background-color: #ffefd5;
+    color: #8b4513; 
+}
+
+body.autumn .app-container,
+body.autumn .task-container,
+body.autumn .spotify-container,
+body.autumn .weather-container {
+    background-color: #fff5e1;
+    border-color: #d2691e; 
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.5); 
+}
+
+body.autumn button {
+    background-color: #f4a460; 
+    color: #ffffff;
+    border-color: #d2691e; 
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.autumn button:hover {
+    background-color: #d2691e;
+    color: #fff5e1;
+    transform: scale(1.1);
+}
+body.autumn .drag-header {
+    background-color: #d2691e;
+    color: #ffffff;
+}
+
+body.autumn #get-weather-btn {
+    background-color: #f4a460; 
+    color: #ffffff;
+    border-color: #d2691e; 
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+body.autumn #get-weather-btn:hover {
+    background-color: #d2691e;
+    color: #fff5e1;
+    transform: scale(1.1);
+}
+
+
+/* Hover for Containers */
+body .app-container:hover,
+body .task-container:hover,
+body .spotify-container:hover,
+body .weather-container:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Drag Header */
+.drag-header {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 20px;
+    cursor: grab;
+    user-select: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.drag-header:hover {
+    background-color: #bbb;
+}
+
+/* Footer Styling */
+.app-footer {
+    width: 100%;
+    background-color: #f0f0f0; /* Default */
+    color: #333333; /* Default */
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid #e0e0e0;
+}
+
+.app-footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-footer .footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.app-footer .footer-link {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Bit', sans-serif;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.app-footer .footer-link:hover {
+    color: #555555;
+    transform: translateY(-2px);
+}
+
+/* Theme Adjustments */
+body.sakura .app-footer {
+    background-color: #ffe4e1;
+    color: #ff69b4;
+    border-top-color: #ff69b4;
+}
+
+body.sakura .footer-link:hover {
+    color: #ff69b4;
+}
+
+body.developer .app-footer {
+    background-color: #000000;
+    color: #00ff00;
+    border-top-color: #00ff00;
+}
+
+body.developer .footer-link:hover {
+    color: #00ff00;
+}
+
+body.autumn .app-footer {
+    background-color: #fff5e1;
+    color: #8b4513;
+    border-top-color: #d2691e;
+}
+
+body.autumn .footer-link:hover {
+    color: #d2691e;
+}
+
+body.cozy .app-footer {
+    background-color: #f5f0e6;
+    color: #4b3e2a;
+    border-top-color: #d2b48c;
+}
+
+body.cozy .footer-link:hover {
+    color: #a0522d;
+}
+/*NekoGif*/
+.Nekogif {
+    position: fixed;
+    bottom: 65px; 
+    right: 20px; 
+    z-index: 100; 
+}
+
+.nekodoro-img {
+    width: 100px; 
+    height: auto; 
+    border-radius: 8px; 
 }
 

@@ -7,9 +7,13 @@
     <title>Nékodoro App</title>
 </head>
 <body>
+    <div class = "Nekogif">
+        <img src="../img/nekodoro.gif" alt="Nékodoro" class="nekodoro-img" />
+    </div>
     <div id="app-container" class="app-container">
+         <div class="drag-header">Drag Me</div>
         <h1>Nékodoro</h1>
-        <div class="app-message">Set your session and break times</div>
+        <div class="app-message"><p>Set your session and break times<p></div>
 
         <div class="time-settings">
             <label for="session-time">Session (minutes):</label>
@@ -32,6 +36,7 @@
     </div>
 
     <div id="task-container" class="task-container">
+        <div class="drag-header">Drag Me</div>
         <h2>Tasks</h2>
         <form id="task-form">
             <input type="text" id="task-input" placeholder="Enter a task" required />
@@ -41,8 +46,22 @@
         <button id="clear-tasks" class="btn-clear-tasks">Clear Tasks</button>
     </div>
 
+    <!--Weather widget container-->
+    <div id="weather-container" class="weather-container">
+        <div class="drag-header">Drag Me</div>
+        <h2>Weather Widget</h2>
+        <input type="text" id="city-input" placeholder="Enter city name" />
+        <button id="get-weather-btn">Get Weather</button>
+        <div id="weather-result" style="display: none;">
+            <h3 id="weather-city"></h3>
+            <p id="weather-temp"></p>
+            <p id="weather-desc"></p>
+        </div>
+    </div>    
+
     <!-- Spotify Player Container -->
     <div id="spotify-container" class="spotify-container">
+        <div class="drag-header">Drag Me</div>
         <h2>Spotify Player</h2>
         <button id="login-button">Login with Spotify</button>
         <div id="search-container" style="display: none;">
@@ -65,19 +84,28 @@
             </div>            
         </div>
     </div>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <label for="theme-select">Choose Theme:</label>
+        <select id="theme-select">
+            <option value="default">Default</option>
+            <option value="autumn">Fall mode</option>
+            <option value="cozy">Cozy Mode</option>
+            <option value="sakura">Sakura Theme</option>
+        </select>
+    </div> 
 
-    <!--Weather widget container-->
-    <div id="weather-container" class="weather-container">
-        <h2>Weather widget</h2>
-        <input type="text" id="city-input" placeholder="Enter city name" />
-        <button id="get-weather-btn">Get Weather</button>
-        <div id="weather-result" style="display: none;">
-            <h3 id="weather-city"></h3>
-            <p id="weather-temp"></p>
-            <p id="weather-desc"></p>
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Nékodoro. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Samppii" class="footer-link">Github</a>
+                <a href="linkedin.com/in/samip-gurung-a6564a1b4" class="footer-link">LinkeDin</a>
+                <a href="https://www.codedex.io/@Samppiii" class="footer-link">Codédex</a>
+            </div>
         </div>
-    </div>    
-
+    </footer>    
+    
     <div class="status-popup" id="status-popup" style="display: none;"></div>
     <button id="toggle-sound" class="btn-toggle-sound" style="display: none;">Pause Sound</button>
 

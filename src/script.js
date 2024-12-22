@@ -104,7 +104,6 @@ startBreakBtn.addEventListener('click', () => {
     bellSound.pause(); // Stop sound when break starts
     soundPlaying = false;
     bellSound.currentTime = 0; // Reset sound
-    startTimer();
     showPopupMessage('Break started!');
 });
 
@@ -195,13 +194,13 @@ const makeDraggable = (elementId) => {
 
     // Mouse down event: Start dragging
     element.addEventListener('mousedown', (e) => {
-        // Ignore dragging when interacting with input elements
+
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
 
         isDragging = true;
         offsetX = e.clientX - element.getBoundingClientRect().left;
         offsetY = e.clientY - element.getBoundingClientRect().top;
-        element.style.cursor = 'grabbing'; // Change cursor
+        element.style.cursor = 'grabbing';
     });
 
     // Mouse move event: Update position
@@ -308,14 +307,11 @@ document.getElementById('pause-button').addEventListener('click', async () => {
 const volumeSlider = document.getElementById('volume-slider');
 const volumeFill = document.getElementById('volume-fill');
 
-// Update volume fill and send the volume to Spotify API
+// Updating volume fill and send the volume to Spotify API
 volumeSlider.addEventListener('input', async (event) => {
     const volumePercent = event.target.value;
     
-    // Update the visual representation
     volumeFill.style.width = `${volumePercent}%`;
-
-    // Make the API call to update the Spotify player volume
     try {
         await fetch(`https://api.spotify.com/v1/me/player/volume?volume_percent=${volumePercent}`, {
             method: 'PUT',
@@ -358,4 +354,43 @@ document.getElementById('get-weather-btn').addEventListener('click', async () =>
         alert('Error fetching weather data: ' + error.message);
     }
 });
+
+const themeSelect = document.getElementById('theme-select');
+
+// Load saved theme from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+    document.body.className = savedTheme;
+    themeSelect.value = savedTheme;
+    updateTextColors(savedTheme); 
+});
+
+// Apply selected theme and adjust dropdown styling
+themeSelect.addEventListener('change', (event) => {
+    const selectedTheme = event.target.value;
+    document.body.className = selectedTheme; 
+    updateTextColors(selectedTheme); 
+
+    localStorage.setItem('selectedTheme', selectedTheme);
+});
+
+// Update text colors based on the theme
+function updateTextColors(theme) {
+    const textElements = document.querySelectorAll('h1, h2, h3, p');
+    textElements.forEach((element) => {
+        switch (theme) {
+            case 'cozy':
+                element.style.color = '#1a237e'; 
+                break;
+            case 'sakura':
+                element.style.color = '#ff69b4'; 
+                break;
+            case 'autumn':
+                element.style.color = '#8b4513';
+                break;
+            default:
+                element.style.color = '#333333';
+        }
+    });
+}
 
