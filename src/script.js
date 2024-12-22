@@ -240,11 +240,11 @@ const makeDraggable = (elementId) => {
 
 // Spotify Player Functionality
 //spotify api
-const clientId = '5b1cc677bbe24fd9b0135d64ca4048c8';
+const clientId = '';//get the client id from spotify developer dashboard
 const redirectUri = 'https://pomodorocodedex.vercel.app/';
 const scopes = 'user-read-playback-state user-modify-playback-state';
 
-let accessToken = 'BQB9GE1W3qfUsm3RXHsFI_jBMosodmBBapD6Zu0br-v-D-5zKSMJeqhf0y5c6FN9wNOpl1XWUvFLIAnFTcJF7vzGtqQq-aRWJkcHWw6I7-7-q_EpKrOvIuxYQzvZKO09INkfeXLAjyQSHXZ4y-u2-acyhOki6w3kRpLAw4I5jSWE4tsE2w6tnXurQpg4I9rmLzsEdloYQgsXcxl63kAVp6MahfuTLl1lQUIcm6fQ';
+let accessToken = ''; // Access token for Spotify API(add your sdk token here, get it from spotify's developer dashboard)
 let deviceId = '';
 let currentTrackUri = '';
 
@@ -338,7 +338,7 @@ volumeSlider.addEventListener('input', async (event) => {
 
 
 //Weather widget
-const apiKey = '0dc33ec3cb200923626813c4b0a7814c';
+const apiKey = ''; // Add your OpenWeatherMap API key here (For now Eric and whoever is reading this, I have removed my API key for security reasons)
 
 document.getElementById('get-weather-btn').addEventListener('click', async () => {
     const cityName = document.getElementById('city-input').value;
