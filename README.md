@@ -52,7 +52,6 @@ Here’s an overview of the project structure:
 - **Spotify**: Log in with Spotify to access the music player. Use the search bar to find songs and control playback.
 - **Weather**: Enter a city name and click `Get Weather` to view the current weather.
 - **Themes**: Use the theme dropdown in the top-right corner to change the app's appearance.
-- **Dino Game**: Click the Chrome Dinosaur Game widget to start playing.
 
 ---
 
@@ -64,7 +63,6 @@ Here’s an overview of the project structure:
   - Authentication and playback logic: `src/script.js`
   - Spotify SDK: `https://sdk.scdn.co/spotify-player.js`
 - **Weather Widget**: `src/widgets/weather.js`
-- **Dino Game**: `src/widgets/dino-game.js`
 - **Themes**: `src/styles.css`
 
 ---
@@ -76,8 +74,3 @@ Here’s an overview of the project structure:
   - Spotify API for music playback.
   - OpenWeatherMap API for real-time weather updates.
 
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
