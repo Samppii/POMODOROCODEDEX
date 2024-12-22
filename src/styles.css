@@ -896,13 +896,13 @@ body.autumn .footer-link:hover {
 }
 
 body.cozy .app-footer {
-    background-color: #f5f0e6;
-    color: #4b3e2a;
-    border-top-color: #d2b48c;
+    background-color: #b8dfff; 
+    color: #1a237e;
+    border-top-color: #1a237e;
 }
 
 body.cozy .footer-link:hover {
-    color: #a0522d;
+    color: #1e88e5;
 }
 /*NekoGif*/
 .Nekogif {
