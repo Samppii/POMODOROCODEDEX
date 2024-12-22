@@ -74,3 +74,8 @@ Here’s an overview of the project structure:
   - Spotify API for music playback.
   - OpenWeatherMap API for real-time weather updates.
 
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
