@@ -376,7 +376,7 @@ themeSelect.addEventListener('change', (event) => {
 
 // Update text colors based on the theme
 function updateTextColors(theme) {
-    const textElements = document.querySelectorAll('h1, h2, h3, p');
+    const textElements = document.querySelectorAll('h1, h2, h3, p, label');
     textElements.forEach((element) => {
         switch (theme) {
             case 'cozy':
