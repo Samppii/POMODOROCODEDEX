@@ -239,17 +239,30 @@ const makeDraggable = (elementId) => {
 
 
 // Spotify Player Functionality
-//spotify api
-const clientId = '5b1cc677bbe24fd9b0135d64ca4048c8';
-const redirectUri = 'https://pomodorocodedex.vercel.app/';
+// spotify api
+
+let clientId = '';
+let accessToken = '';
+
+// Fetch Spotify credentials from the backend
+fetch('http://localhost:5001/spotify-token')
+    .then((response) => response.json())
+    .then((data) => {
+        clientId = data.clientId; 
+        accessToken = data.accessToken;
+        console.log('Spotify credentials loaded');
+    })
+    .catch((error) => console.error('Error fetching Spotify credentials:', error));
+
+const redirectUri = 'http://127.0.0.1:5500/index.html';
 const scopes = 'user-read-playback-state user-modify-playback-state';
 
-let accessToken = 'BQB9GE1W3qfUsm3RXHsFI_jBMosodmBBapD6Zu0br-v-D-5zKSMJeqhf0y5c6FN9wNOpl1XWUvFLIAnFTcJF7vzGtqQq-aRWJkcHWw6I7-7-q_EpKrOvIuxYQzvZKO09INkfeXLAjyQSHXZ4y-u2-acyhOki6w3kRpLAw4I5jSWE4tsE2w6tnXurQpg4I9rmLzsEdloYQgsXcxl63kAVp6MahfuTLl1lQUIcm6fQ';
-let deviceId = '';
-let currentTrackUri = '';
-
-// Spotify Login
+// Example usage
 document.getElementById('login-button').addEventListener('click', () => {
+    if (!clientId) {
+        console.error('Client ID is not loaded yet');
+        return;
+    }
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
     window.location.href = authUrl;
 });
@@ -338,7 +351,14 @@ volumeSlider.addEventListener('input', async (event) => {
 
 
 //Weather widget
-const apiKey = '0dc33ec3cb200923626813c4b0a7814c';
+let apiKey = '';
+fetch('http://localhost:5001/weather-key')
+    .then((response) => response.json())
+    .then((data) => {
+        apiKey = data.apiKey; // Use the API key
+        console.log('Weather API key fetched successfully');
+    })
+    .catch((error) => console.error('Error fetching Weather API key:', error));
 
 document.getElementById('get-weather-btn').addEventListener('click', async () => {
     const cityName = document.getElementById('city-input').value;
